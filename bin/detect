@@ -4,7 +4,7 @@ if [ -f $1/.buildcache ]; then
   echo "Cache - save"
   exit 0
 else
-  ls
+  ls -a
   echo $1
   echo "$1"
   echo "no .buildcache file"

@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
-if [ -f $1/.buildcache ]; then
+if [ -f ./.buildcache ]; then
   echo "Cache - save"
   exit 0
 else
-  ls -a
-  echo $1
-  echo "$1"
   echo "no .buildcache file"
   exit 1
 fi

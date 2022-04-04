@@ -12,8 +12,9 @@ BUILD_DIR="."
 CACHE_DIR=$1
 HOME_FOLDER_REPLACEMENT="__CACHE_HOME__"
 
-
 echo "=====> Caching files for future builds"
+
+echo "reading from cache dir $CACHE_DIR"
 
 for FILENAME in $(cat ${BUILD_DIR}/.buildcache | sed '/^$/d'); do
   echo -n "${FILENAME}" | indent
@@ -40,9 +41,14 @@ for FILENAME in $(cat ${BUILD_DIR}/.buildcache | sed '/^$/d'); do
   if [ -e ${DEST} ]; then
     rm -r ${DEST}
   fi
+  
+  
 
   # copy files to cache
   cp -r ${SRC} ${DEST}
 
   echo " ✓"
+  
+  echo "copied to ${DEST} from ${SRC}"
+  
 done

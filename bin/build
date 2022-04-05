@@ -12,9 +12,15 @@ BUILD_DIR="."
 CACHE_DIR=$1
 HOME_FOLDER_REPLACEMENT="__CACHE_HOME__"
 
+buildcachelayer="$CACHE_DIR/buildcache"
+mkdir -p "$buildcachelayer"
+echo -e 'cache = true\nlaunch = true\nbuild = true' > "$CACHE_DIR/buildcache.toml"
+
 echo "=====> Caching files for future builds"
 
 echo "reading from cache dir $CACHE_DIR"
+
+ls -a $CACHE_DIR
 
 for FILENAME in $(cat ${BUILD_DIR}/.buildcache | sed '/^$/d'); do
   echo -n "${FILENAME}" | indent
@@ -52,3 +58,7 @@ for FILENAME in $(cat ${BUILD_DIR}/.buildcache | sed '/^$/d'); do
   echo "copied to ${DEST} from ${SRC}"
   
 done
+
+echo "results in directory $buildcachelayer"
+
+ls -a $buildcachelayer

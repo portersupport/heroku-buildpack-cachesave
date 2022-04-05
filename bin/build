@@ -14,7 +14,7 @@ HOME_FOLDER_REPLACEMENT="__CACHE_HOME__"
 
 buildcachelayer="$CACHE_DIR/buildcache"
 mkdir -p "$buildcachelayer"
-echo -e 'cache = true\nlaunch = true\nbuild = true' > "$CACHE_DIR/buildcache.toml"
+echo -e 'cache = true\nlaunch = false\nbuild = true' > "$CACHE_DIR/buildcache.toml"
 
 echo "=====> Caching files for future builds"
 
